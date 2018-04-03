@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsdl1="http://www.example.org/servicioAlmacenCentral/" xmlns:wsdl3="http://www.example.org/servicioProveedor2/" xmlns:wsdl2="http://www.example.org/servicioProveedor1/" xmlns:wsdl4="http://www.example.org/servicioProveedor3/" xmlns:tns="http://procesoCompra.bpel.mtis" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://www.example.org/servicioAlmacenLocal/" name="procesoCompra" targetNamespace="http://procesoCompra.bpel.mtis" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <plnk:partnerLinkType name="almacenLocalPLN">
+    <plnk:role name="almacenLocalRole" portType="wsdl:servicioAlmacenLocal" />
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="almacenCentralPLN">
+    <plnk:role name="almacenCentralRole" portType="wsdl1:servicioAlmacenCentral" />
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="proveedor1PLN">
+    <plnk:role name="proveedor1Role" portType="wsdl2:servicioProveedor1" />
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="proveedor2PLN">
+    <plnk:role name="proveedor2Role" portType="wsdl3:servicioProveedor2" />
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="proveedor3PLN">
+    <plnk:role name="proveedor3Role" portType="wsdl4:servicioProveedor3" />
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="procesoCompra">
+    <plnk:role name="procesoCompraProvider" portType="tns:procesoCompra" />
+  </plnk:partnerLinkType>
+  <import namespace="http://www.example.org/servicioAlmacenLocal/" location="servicioAlmacenLocal.wsdl" />
+  <import namespace="http://www.example.org/servicioAlmacenCentral/" location="servicioAlmacenCentral.wsdl" />
+  <import namespace="http://www.example.org/servicioProveedor1/" location="servicioProveedor1.wsdl" />
+  <import namespace="http://www.example.org/servicioProveedor2/" location="servicioProveedor2.wsdl" />
+  <import namespace="http://www.example.org/servicioProveedor3/" location="servicioProveedor3.wsdl" />
+  <types>
+    <schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://procesoCompra.bpel.mtis" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="procesoCompraRequest">
+        <complexType>
+          <sequence>
+            <element name="numeroUnidades" type="int" />
+            <element name="referenciaProducto" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="procesoCompraResponse">
+        <complexType>
+          <sequence>
+            <element name="compraRealizadaCorrectamente" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="procesoCompraRequestMessage">
+    <part name="payload" element="tns:procesoCompraRequest" />
+  </message>
+  <message name="procesoCompraResponseMessage">
+    <part name="payload" element="tns:procesoCompraResponse" />
+  </message>
+  <portType name="procesoCompra">
+    <operation name="process">
+      <input message="tns:procesoCompraRequestMessage" />
+      <output message="tns:procesoCompraResponseMessage" />
+    </operation>
+  </portType>
+  <binding name="procesoCompraBinding" type="tns:procesoCompra">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="process">
+      <soap:operation soapAction="http://procesoCompra.bpel.mtis/process" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="procesoCompraService">
+    <port name="procesoCompraPort" binding="tns:procesoCompraBinding">
+      <soap:address location="http://localhost:8080/ode/processes/procesoCompra" />
+    </port>
+  </service>
+</definitions>

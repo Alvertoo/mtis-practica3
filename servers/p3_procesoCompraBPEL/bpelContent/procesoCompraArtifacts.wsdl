@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://procesoCompra.bpel.mtis" xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop" xmlns:wsdl="http://www.example.org/servicioAlmacenLocal/" xmlns:wsdl1="http://www.example.org/servicioAlmacenCentral/" xmlns:wsdl2="http://www.example.org/servicioProveedor1/" xmlns:wsdl3="http://www.example.org/servicioProveedor2/" xmlns:wsdl4="http://www.example.org/servicioProveedor3/" name="procesoCompra" targetNamespace="http://procesoCompra.bpel.mtis">
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     TYPE DEFINITION - List of types participating in this BPEL process 
+     The BPEL Designer will generate default request and response types
+     but you can define or import any XML Schema type and use them as part 
+     of the message types.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="almacenLocalPLN">
+    <plnk:role name="almacenLocalRole" portType="wsdl:servicioAlmacenLocal"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="almacenCentralPLN">
+    <plnk:role name="almacenCentralRole" portType="wsdl1:servicioAlmacenCentral"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="proveedor1PLN">
+    <plnk:role name="proveedor1Role" portType="wsdl2:servicioProveedor1"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="proveedor2PLN">
+    <plnk:role name="proveedor2Role" portType="wsdl3:servicioProveedor2"/>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="proveedor3PLN">
+    <plnk:role name="proveedor3Role" portType="wsdl4:servicioProveedor3"/>
+  </plnk:partnerLinkType>
+    <import location="servicioAlmacenLocal.wsdl" namespace="http://www.example.org/servicioAlmacenLocal/"/>
+    <import location="servicioAlmacenCentral.wsdl" namespace="http://www.example.org/servicioAlmacenCentral/"/>
+    <import location="servicioProveedor1.wsdl" namespace="http://www.example.org/servicioProveedor1/"/>
+    <import location="servicioProveedor2.wsdl" namespace="http://www.example.org/servicioProveedor2/"/>
+    <import location="servicioProveedor3.wsdl" namespace="http://www.example.org/servicioProveedor3/"/>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://procesoCompra.bpel.mtis">
+
+            <element name="procesoCompraRequest">
+                <complexType>
+                    <sequence>
+                    	<element name="numeroUnidades" type="int"/>
+                    	<element name="referenciaProducto" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+
+            <element name="procesoCompraResponse">
+                <complexType>
+                    <sequence>
+                        <element name="compraRealizadaCorrectamente" type="boolean"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     MESSAGE TYPE DEFINITION - Definition of the message types used as 
+     part of the port type defintions
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <message name="procesoCompraRequestMessage">
+        <part element="tns:procesoCompraRequest" name="payload"/>
+    </message>
+    <message name="procesoCompraResponseMessage">
+        <part element="tns:procesoCompraResponse" name="payload"/>
+    </message>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PORT TYPE DEFINITION - A port type groups a set of operations into
+     a logical service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+
+    <!-- portType implemented by the procesoCompra BPEL process -->
+    <portType name="procesoCompra">
+        <operation name="process">
+            <input message="tns:procesoCompraRequestMessage"/>
+            <output message="tns:procesoCompraResponseMessage"/>
+        </operation>
+    </portType>   
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     PARTNER LINK TYPE DEFINITION
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->    
+    <plnk:partnerLinkType name="procesoCompra">
+        <plnk:role name="procesoCompraProvider" portType="tns:procesoCompra"/>
+    </plnk:partnerLinkType>
+    
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     BINDING DEFINITION - Defines the message format and protocol details
+     for a web service.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <binding name="procesoCompraBinding" type="tns:procesoCompra">
+    	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    	<operation name="process">
+    		<soap:operation soapAction="http://procesoCompra.bpel.mtis/process"/>
+    		<input>
+    			<soap:body use="literal"/>
+    		</input>
+    		<output>
+    			<soap:body use="literal"/>
+    		</output>
+    	</operation>
+    </binding>
+
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     SERVICE DEFINITION - A service groups a set of ports into
+     a service unit.
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <service name="procesoCompraService">
+    	<port binding="tns:procesoCompraBinding" name="procesoCompraPort">
+    		<soap:address location="http://localhost:8080/ode/processes/procesoCompra"/>
+    	</port>
+    </service>
+</definitions>

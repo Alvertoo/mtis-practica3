@@ -1,0 +1,10 @@
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\bin\Debug\mtis_p3_cliente_net.exe.config
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\bin\Debug\mtis_p3_cliente_net.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\bin\Debug\mtis_p3_cliente_net.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\obj\Debug\mtis_p3_cliente_net.csprojResolveAssemblyReference.cache
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\obj\Debug\mtis_p3_cliente_net.Form1.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\obj\Debug\mtis_p3_cliente_net.Properties.Resources.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\obj\Debug\mtis_p3_cliente_net.csproj.GenerateResource.Cache
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\obj\Debug\mtis_p3_cliente_net.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\obj\Debug\mtis_p3_cliente_net.pdb
+C:\Users\Lenovo\Documents\Visual Studio 2015\Projects\mtis_p3_cliente_net\mtis_p3_cliente_net\obj\Debug\mtis_p3_cliente_net.csproj.CoreCompileInputs.cache

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d693b3fb-806d-4f3f-944d-3f5b9bf1f980" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/ode/deployment/bundles/p3_procesoCompraBPEL/procesoCompraArtifacts.wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="servicioProveedor1.wsdl" MetadataType="Wsdl" ID="76673812-a7bd-4b61-9480-4a203dcfbced" SourceId="1" SourceUrl="http://localhost:8080/ode/deployment/bundles/p3_procesoCompraBPEL/servicioProveedor1.wsdl" />
+    <MetadataFile FileName="servicioAlmacenLocal.wsdl" MetadataType="Wsdl" ID="ce5ad6c4-5f07-4123-a3d0-239117ad4401" SourceId="1" SourceUrl="http://localhost:8080/ode/deployment/bundles/p3_procesoCompraBPEL/servicioAlmacenLocal.wsdl" />
+    <MetadataFile FileName="servicioAlmacenCentral.wsdl" MetadataType="Wsdl" ID="2c231fba-144d-4847-8faf-0b28f96f1736" SourceId="1" SourceUrl="http://localhost:8080/ode/deployment/bundles/p3_procesoCompraBPEL/servicioAlmacenCentral.wsdl" />
+    <MetadataFile FileName="procesoCompra.wsdl" MetadataType="Wsdl" ID="80a5e40b-0867-42b0-b5a0-d0d1875b8c55" SourceId="1" SourceUrl="http://localhost:8080/ode/deployment/bundles/p3_procesoCompraBPEL/procesoCompraArtifacts.wsdl" />
+    <MetadataFile FileName="servicioProveedor2.wsdl" MetadataType="Wsdl" ID="a0563b3d-a567-4cd1-90d8-934eb8cfd220" SourceId="1" SourceUrl="http://localhost:8080/ode/deployment/bundles/p3_procesoCompraBPEL/servicioProveedor2.wsdl" />
+    <MetadataFile FileName="servicioProveedor3.wsdl" MetadataType="Wsdl" ID="dd3546af-2683-4664-b750-b2de9d037abd" SourceId="1" SourceUrl="http://localhost:8080/ode/deployment/bundles/p3_procesoCompraBPEL/servicioProveedor3.wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
